@@ -453,11 +453,11 @@ def update_all(brands, country, platform, year, sentiment, verified):
             text=sub["model"],
             hovertemplate="<b>%{text}</b><br>Price: $%{x:.0f}<br>Rating: %{y:.2f}<extra></extra>",
         ))
-    fig_scatter.update_layout(**PLOT_LAYOUT,
-                               xaxis=dict(title="Price (USD)", showgrid=True, gridcolor=BORDER,
-                                           tickfont=dict(color=MUTED), tickprefix="$"),
-                               yaxis=dict(title="Avg Rating", showgrid=True, gridcolor=BORDER,
-                                           tickfont=dict(color=MUTED)))
+   fig_scatter.update_layout(**PLOT_LAYOUT)
+fig_scatter.update_xaxes(title="Price (USD)", showgrid=True, gridcolor=BORDER,
+                          tickfont=dict(color=MUTED), tickprefix="$")
+fig_scatter.update_yaxes(title="Avg Rating", showgrid=True, gridcolor=BORDER,
+                          tickfont=dict(color=MUTED))
 
     # ── Platform ───────────────────────────────────────────────────────────────
     plat = d.groupby("source").agg(total=("rating","count"), avg_rating=("rating","mean")).reset_index()
