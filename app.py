@@ -52,7 +52,6 @@ PLOT_LAYOUT = dict(
     plot_bgcolor="rgba(0,0,0,0)",
     font=dict(color=TEXT, family="Inter, Segoe UI, sans-serif", size=11),
     margin=dict(l=10, r=10, t=10, b=10),
-    legend=dict(bgcolor="rgba(0,0,0,0)", font=dict(size=10)),
     xaxis=dict(showgrid=False, zeroline=False, tickfont=dict(color=MUTED)),
     yaxis=dict(showgrid=True,  gridcolor=BORDER, zeroline=False, tickfont=dict(color=MUTED)),
 )
