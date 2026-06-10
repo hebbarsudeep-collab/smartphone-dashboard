@@ -446,11 +446,17 @@ def update_all(brands, country, platform, year, sentiment, verified):
     ).reset_index().sort_values("year_month")
     st["label"] = pd.to_datetime(st["year_month"]).dt.strftime("%b %y")
     fig_area = go.Figure()
-    for col, color in [("Positive", "#34d399"), ("Neutral", "#fbbf24"), ("Negative", "#f87171")]:
+area_colors = [
+        ("Positive", "#34d399", "rgba(52,211,153,0.25)"),
+        ("Neutral",  "#fbbf24", "rgba(251,191,36,0.25)"),
+        ("Negative", "#f87171", "rgba(248,113,113,0.25)"),
+    ]
+    for col, color, fill in area_colors:
         fig_area.add_trace(go.Scatter(
             x=st["label"], y=st[col], name=col, stackgroup="one",
             mode="lines", line=dict(color=color, width=1.5),
-            fillcolor=color + "40",
+            fillcolor=fill,
+        ))
         ))
     fig_area.update_layout(**BASE_LAYOUT, legend=LEGEND_H, xaxis=AXIS_DEF, yaxis=AXIS_GRID)
 
